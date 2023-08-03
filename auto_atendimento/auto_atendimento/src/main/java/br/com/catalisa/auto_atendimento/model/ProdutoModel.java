@@ -8,12 +8,13 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "TB_ITENS")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ItemModel {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo_produto", discriminatorType = DiscriminatorType.STRING)
+public class ProdutoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
